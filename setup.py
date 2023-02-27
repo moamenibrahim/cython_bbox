@@ -10,6 +10,7 @@ from __future__ import print_function
 from setuptools import Extension
 from setuptools import setup
 from distutils.command.build import build as _build
+from Cython.Build import cythonize
 import os
 
 # ref from https://stackoverflow.com/questions/54117786/add-numpy-get-include-argument-to-setuptools-without-preinstalled-numpy
@@ -46,7 +47,7 @@ setup(
     name='cython_bbox',
     setup_requires=["setuptools>=18.0","Cython","numpy"],
     install_requires=["Cython","numpy"],
-    ext_modules=ext_modules,
+    ext_modules=cythonize(ext_modules),
     cmdclass={'build': build},
     version = '0.1.3',
     description = 'Standalone cython_bbox',
